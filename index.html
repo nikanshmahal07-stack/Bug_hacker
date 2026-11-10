@@ -62,7 +62,8 @@ input{width:100%;padding:12px;border-radius:10px;border:1px solid #555;backgroun
 <div class="msg" id="msg"></div>
 <div class="high" id="highBox">HIGH SCORE: Loading...</div>
 </div>
-  <script>
+
+<script>
 var score=0, notes=0, life=3, streak=0, qNum=0, selected=-1, cur=null, filter='ALL', examMode=false, examCount=0, examScore=0, timerInt=null, timeLeft=30, usedIds={}, pool=[], answered=false;
 
 function playSound(type){
@@ -80,40 +81,41 @@ function playSound(type){
 
 var QB=[
 {id:1,unit:'U1',topic:'U1 - C Structure',code:['#include <stdio.h>','int main() {','printf("Hello");','return 0;','}'],bug:0,exp:'Sabse pehle #include <stdio.h> lagta hai!',correct:'Line 1 - #include <stdio.h> hi sahi answer hai. Bina iske printf nahi chalega.'},
-{id:2,unit:'U1',topic:'U1 - scanf me &',code:['#include <stdio.h>','int main(){','int a;','scanf("%d", a);','printf("%d",a);','return 0;','}'],bug:3,exp:'scanf me & MUST hai!',correct:'Sahi Answer: scanf("%d", &a); & lagao, warna value store nahi hogi.'},
-{id:3,unit:'U1',topic:'U1 - printf %d',code:['#include <stdio.h>','int main(){','int a=10;','printf("%c",a);','return 0;','}'],bug:3,exp:'int ke liye %d lagta hai!',correct:'Sahi Answer: printf("%d",a); %c char ke liye hota hai.'},
-{id:4,unit:'U1',topic:'U1 - Add 2 Numbers',code:['#include <stdio.h>','int main(){','int a=5,b=10;','printf("%d", a-b);','return 0;','}'],bug:3,exp:'Add karna tha, - kar diya!',correct:'Sahi Answer: printf("%d", a+b); Answer = 15 aayega.'},
-{id:5,unit:'U1',topic:'U1 - Area Rectangle',code:['#include <stdio.h>','int main(){','int l=5,b=4;','int area = l+b;','printf("%d",area);','return 0;','}'],bug:3,exp:'Area = l*b hota hai!',correct:'Sahi Answer: int area = l*b; Answer = 20 aayega.'},
-{id:6,unit:'U1',topic:'U1 - Swap Numbers',code:['#include <stdio.h>','int main(){','int a=5,b=10;','a=b;','b=a;','printf("%d %d",a,b);','}'],bug:3,exp:'Aise swap nahi hoga!',correct:'Sahi Answer: temp=a; a=b; b=temp; Temp variable chahiye.'},
-{id:7,unit:'U2',topic:'U2 - Even Odd',code:['#include <stdio.h>','int main(){','int n=7;','if(n%2=0)','printf("Even");','else printf("Odd");','}'],bug:3,exp:'= assign hai, == compare hai!',correct:'Sahi Answer: if(n%2==0) == se compare karte hai.'},
-{id:8,unit:'U2',topic:'U2 - Largest of 3',code:['#include <stdio.h>','int main(){','int a=10,b=20,c=15;','if(a>b || a>c) printf("A");','else printf("B/C");','}'],bug:3,exp:'Largest ke liye && chahiye!',correct:'Sahi Answer: if(a>b && a>c) Dono condition sahi honi chahiye.'},
-{id:9,unit:'U2',topic:'U2 - Grade Calculator',code:['#include <stdio.h>','int main(){','int m=85;','if(m>90) printf("A");','else if(m>80) printf("B");','else printf("C");','}'],bug:3,exp:'90 wala fail ho jayega!',correct:'Sahi Answer: if(m>=90) >= matlab 90 bhi include.'},
-{id:10,unit:'U2',topic:'U2 - Switch Break',code:['#include <stdio.h>','int main(){','int d=2;','switch(d){','case 1: printf("Mon");','case 2: printf("Tue");','case 3: printf("Wed");','}'],bug:5,exp:'switch me break MUST hai!',correct:'Sahi Answer: case 2: printf("Tue"); break; Har case ke baad break lagao.'},
-{id:11,unit:'U2',topic:'U2 - For Loop ;',code:['#include <stdio.h>','int main(){','int i;','for(i=1;i<=5;i++);','{ printf("%d",i); }','}'],bug:3,exp:'for ke baad ; mat lagao!',correct:'Sahi Answer: for(i=1;i<=5;i++) Bina ; ke likho.'},
-{id:12,unit:'U2',topic:'U2 - Table of N',code:['#include <stdio.h>','int main(){','int n=5;','for(int i=1;i<=10;i++)','printf("%d", n+i);','}'],bug:4,exp:'Table me * lagta hai!',correct:'Sahi Answer: printf("%d", n*i); 5,10,15... aayega.'},
-{id:13,unit:'U2',topic:'U2 - While Loop',code:['#include <stdio.h>','int main(){','int i=1;','while(i<5)','printf("%d",i);','i++;','}'],bug:4,exp:'while me {} nahi hai!',correct:'Sahi Answer: while(i<5){ printf("%d",i); i++; } {} lagao.'},
-{id:14,unit:'U2',topic:'U2 - Do While ;',code:['#include <stdio.h>','int main(){','int i=1;','do{ printf("%d",i); i++; }','while(i<5)','}'],bug:4,exp:'do-while me while ke baad ; lagta hai!',correct:'Sahi Answer: while(i<5); ; lagana MUST hai.'},
-{id:15,unit:'U2',topic:'U2 - Recursion Fact',code:['int fact(int n){','if(n==0) return 1;','return n * fact(n);','}'],bug:2,exp:'fact(n) se infinite!',correct:'Sahi Answer: return n * fact(n-1); Har baar 1 kam karo.'},
+{id:2,unit:'U1',topic:'U1 - scanf me &',code:['#include <stdio.h>','int main(){','int a;','scanf("%d", a);','printf("%d",a);','return 0;','}'],bug:3,exp:'scanf me & MUST hai!',correct:'Sahi Answer: scanf("%d", &a);  & lagao, warna value store nahi hogi.'},
+{id:3,unit:'U1',topic:'U1 - printf %d',code:['#include <stdio.h>','int main(){','int a=10;','printf("%c",a);','return 0;','}'],bug:3,exp:'int ke liye %d lagta hai!',correct:'Sahi Answer: printf("%d",a);  %c char ke liye hota hai.'},
+{id:4,unit:'U1',topic:'U1 - Add 2 Numbers',code:['#include <stdio.h>','int main(){','int a=5,b=10;','printf("%d", a-b);','return 0;','}'],bug:3,exp:'Add karna tha, - kar diya!',correct:'Sahi Answer: printf("%d", a+b);  Answer = 15 aayega.'},
+{id:5,unit:'U1',topic:'U1 - Area Rectangle',code:['#include <stdio.h>','int main(){','int l=5,b=4;','int area = l+b;','printf("%d",area);','return 0;','}'],bug:3,exp:'Area = l*b hota hai!',correct:'Sahi Answer: int area = l*b;  Answer = 20 aayega.'},
+{id:6,unit:'U1',topic:'U1 - Swap Numbers',code:['#include <stdio.h>','int main(){','int a=5,b=10;','a=b;','b=a;','printf("%d %d",a,b);','}'],bug:3,exp:'Aise swap nahi hoga!',correct:'Sahi Answer: temp=a; a=b; b=temp;  Temp variable chahiye.'},
+{id:7,unit:'U2',topic:'U2 - Even Odd',code:['#include <stdio.h>','int main(){','int n=7;','if(n%2=0)','printf("Even");','else printf("Odd");','}'],bug:3,exp:'= assign hai, == compare hai!',correct:'Sahi Answer: if(n%2==0)  == se compare karte hai.'},
+{id:8,unit:'U2',topic:'U2 - Largest of 3',code:['#include <stdio.h>','int main(){','int a=10,b=20,c=15;','if(a>b || a>c) printf("A");','else printf("B/C");','}'],bug:3,exp:'Largest ke liye && chahiye!',correct:'Sahi Answer: if(a>b && a>c)  Dono condition sahi honi chahiye.'},
+{id:9,unit:'U2',topic:'U2 - Grade Calculator',code:['#include <stdio.h>','int main(){','int m=85;','if(m>90) printf("A");','else if(m>80) printf("B");','else printf("C");','}'],bug:3,exp:'90 wala fail ho jayega!',correct:'Sahi Answer: if(m>=90)  >= matlab 90 bhi include.'},
+{id:10,unit:'U2',topic:'U2 - Switch Break',code:['#include <stdio.h>','int main(){','int d=2;','switch(d){','case 1: printf("Mon");','case 2: printf("Tue");','case 3: printf("Wed");','}'],bug:5,exp:'switch me break MUST hai!',correct:'Sahi Answer: case 2: printf("Tue"); break;  Har case ke baad break lagao.'},
+{id:11,unit:'U2',topic:'U2 - For Loop ;',code:['#include <stdio.h>','int main(){','int i;','for(i=1;i<=5;i++);','{ printf("%d",i); }','}'],bug:3,exp:'for ke baad ; mat lagao!',correct:'Sahi Answer: for(i=1;i<=5;i++)  Bina ; ke likho.'},
+{id:12,unit:'U2',topic:'U2 - Table of N',code:['#include <stdio.h>','int main(){','int n=5;','for(int i=1;i<=10;i++)','printf("%d", n+i);','}'],bug:4,exp:'Table me * lagta hai!',correct:'Sahi Answer: printf("%d", n*i);  5,10,15... aayega.'},
+{id:13,unit:'U2',topic:'U2 - While Loop',code:['#include <stdio.h>','int main(){','int i=1;','while(i<5)','printf("%d",i);','i++;','}'],bug:4,exp:'while me {} nahi hai!',correct:'Sahi Answer: while(i<5){ printf("%d",i); i++; }  {} lagao.'},
+{id:14,unit:'U2',topic:'U2 - Do While ;',code:['#include <stdio.h>','int main(){','int i=1;','do{ printf("%d",i); i++; }','while(i<5)','}'],bug:4,exp:'do-while me while ke baad ; lagta hai!',correct:'Sahi Answer: while(i<5);  ; lagana MUST hai.'},
+{id:15,unit:'U2',topic:'U2 - Recursion Fact',code:['int fact(int n){','if(n==0) return 1;','return n * fact(n);','}'],bug:2,exp:'fact(n) se infinite!',correct:'Sahi Answer: return n * fact(n-1);  Har baar 1 kam karo.'},
 {id:16,unit:'U2',topic:'U2 - Fibonacci Recursion',code:['int fib(int n){','if(n<=1) return n;','return fib(n-1)+fib(n-1);','}'],bug:2,exp:'Dusra wala fib(n-2) hona chahiye!',correct:'Sahi Answer: return fib(n-1)+fib(n-2);'},
-{id:17,unit:'U3',topic:'U3 - Array Max',code:['#include <stdio.h>','int main(){','int a[5]={2,9,4,7,1};','int max=a[0];','for(int i=0;i<=5;i++) if(a[i]>max) max=a[i];','printf("%d",max);','}'],bug:4,exp:'Array 0-4 tak hai!',correct:'Sahi Answer: for(int i=0;i<5;i++) i<5 likho, i<=5 nahi.'},
-{id:18,unit:'U3',topic:'U3 - Reverse Array',code:['#include <stdio.h>','int main(){','int a[5]={1,2,3,4,5};','for(int i=5;i>=0;i--) printf("%d",a[i]);','}'],bug:3,exp:'i=5 se start kiya!',correct:'Sahi Answer: for(int i=4;i>=0;i--) Last index 4 hai.'},
+{id:17,unit:'U3',topic:'U3 - Array Max',code:['#include <stdio.h>','int main(){','int a[5]={2,9,4,7,1};','int max=a[0];','for(int i=0;i<=5;i++) if(a[i]>max) max=a[i];','printf("%d",max);','}'],bug:4,exp:'Array 0-4 tak hai!',correct:'Sahi Answer: for(int i=0;i<5;i++)  i<5 likho, i<=5 nahi.'},
+{id:18,unit:'U3',topic:'U3 - Reverse Array',code:['#include <stdio.h>','int main(){','int a[5]={1,2,3,4,5};','for(int i=5;i>=0;i--) printf("%d",a[i]);','}'],bug:3,exp:'i=5 se start kiya!',correct:'Sahi Answer: for(int i=4;i>=0;i--)  Last index 4 hai.'},
 {id:19,unit:'U3',topic:'U3 - String strlen',code:['#include <stdio.h>','#include <string.h>','int main(){','char s[]="Hello";','printf("%d", strlen(s));','}'],bug:3,exp:'Ye sahi hai!',correct:'Sahi Answer: Ye code bilkul sahi hai! strlen = 5 dega.'},
-{id:20,unit:'U3',topic:'U3 - Pointer &',code:['#include <stdio.h>','int main(){','int a=10;','int *p;','p = a;','printf("%d",*p);','}'],bug:4,exp:'Pointer me address jata hai!',correct:'Sahi Answer: p = &a; & se address milta hai.'},
-{id:21,unit:'U3',topic:'U3 - Pointer Value',code:['#include <stdio.h>','int main(){','int a=10;','int *p=&a;','printf("%d", p);','}'],bug:4,exp:'p se address aayega!',correct:'Sahi Answer: printf("%d", *p); Value ke liye *p chahiye.'},
+{id:20,unit:'U3',topic:'U3 - Pointer &',code:['#include <stdio.h>','int main(){','int a=10;','int *p;','p = a;','printf("%d",*p);','}'],bug:4,exp:'Pointer me address jata hai!',correct:'Sahi Answer: p = &a;  & se address milta hai.'},
+{id:21,unit:'U3',topic:'U3 - Pointer Value',code:['#include <stdio.h>','int main(){','int a=10;','int *p=&a;','printf("%d", p);','}'],bug:4,exp:'p se address aayega!',correct:'Sahi Answer: printf("%d", *p);  Value ke liye *p chahiye.'},
 {id:22,unit:'U3',topic:'U3 - Structure',code:['#include <stdio.h>','struct Student{int roll;};','int main(){','struct Student s;','s.roll=1;','printf("%d",s.roll);','}'],bug:1,exp:'Ye sahi hai!',correct:'Sahi Answer: Ye code sahi hai! . se access karte hai.'},
 {id:23,unit:'U3',topic:'U3 - File Handling',code:['#include <stdio.h>','int main(){','FILE *f = fopen("data.txt","w");','fprintf(f,"Hello");','fclose(f);','}'],bug:3,exp:'Ye sahi hai!',correct:'Sahi Answer: Ye code sahi hai! w=write mode.'},
 {id:24,unit:'U4',topic:'U4 - Python Hello',code:['print("Hello")','a=10','print(a)'],bug:0,exp:'Ye sahi hai!',correct:'Sahi Answer: Ye code sahi hai! Python me ; nahi lagta.'},
-{id:25,unit:'U4',topic:'U4 - Python BMI',code:['w = float(input("Weight: "))','h = float(input("Height: "))','bmi = w / h * h','print(bmi)'],bug:2,exp:'BMI = w/(h*h) hota hai!',correct:'Sahi Answer: bmi = w / (h*h) Bracket lagao!'},
-{id:26,unit:'U4',topic:'U4 - Python Input int',code:['a = input("Enter: ")','b = input("Enter: ")','print(a+b)'],bug:2,exp:'input() string deta hai!',correct:'Sahi Answer: a = int(input("Enter: ")) int() lagao.'},
-{id:27,unit:'U4',topic:'U4 - Python else :',code:['a = int(input("Age: "))','if a>18:','print("Adult")','else','print("Minor")'],bug:3,exp:'else ke baad : lagao!',correct:'Sahi Answer: else: : lagana MUST hai.'},
+{id:25,unit:'U4',topic:'U4 - Python BMI',code:['w = float(input("Weight: "))','h = float(input("Height: "))','bmi = w / h * h','print(bmi)'],bug:2,exp:'BMI = w/(h*h) hota hai!',correct:'Sahi Answer: bmi = w / (h*h)  Bracket lagao!'},
+{id:26,unit:'U4',topic:'U4 - Python Input int',code:['a = input("Enter: ")','b = input("Enter: ")','print(a+b)'],bug:2,exp:'input() string deta hai!',correct:'Sahi Answer: a = int(input("Enter: "))  int() lagao.'},
+{id:27,unit:'U4',topic:'U4 - Python else :',code:['a = int(input("Age: "))','if a>18:','print("Adult")','else','print("Minor")'],bug:3,exp:'else ke baad : lagao!',correct:'Sahi Answer: else:  : lagana MUST hai.'},
 {id:28,unit:'U4',topic:'U4 - Python For Range',code:['for i in range(5):','print(i)','print("Done")'],bug:0,exp:'range(5)=0-4 dega.',correct:'Sahi Answer: Ye sahi hai! 1-5 chahiye to range(1,6) likho.'},
 {id:29,unit:'U4',topic:'U4 - Python While',code:['i=1','while i<=5:','print(i)','i=i+1'],bug:0,exp:'Ye sahi hai!',correct:'Sahi Answer: Ye sahi hai! i=i+1 se loop rukega.'},
 {id:30,unit:'U4',topic:'U4 - Python Function',code:['def add(a,b):','return a+b','print(add(2,3))'],bug:0,exp:'Ye sahi hai!',correct:'Sahi Answer: Ye sahi hai! add(2,3)=5 aayega.'},
-{id:31,unit:'U4',topic:'U4 - Python ==',code:['a = 10','if a = 10:','print("Yes")'],bug:1,exp:'if me = nahi, == lagta hai!',correct:'Sahi Answer: if a==10: == se compare karte hai.'},
+{id:31,unit:'U4',topic:'U4 - Python ==',code:['a = 10','if a = 10:','print("Yes")'],bug:1,exp:'if me = nahi, == lagta hai!',correct:'Sahi Answer: if a==10:  == se compare karte hai.'},
 {id:32,unit:'U4',topic:'U4 - Grade Python',code:['m = int(input("Marks: "))','if m>=90: print("A")','elif m>=80: print("B")','else: print("C")'],bug:0,exp:'Ye sahi hai!',correct:'Sahi Answer: Ye sahi hai! Python me elif lagta hai.'},
 {id:33,unit:'U5',topic:'U5 - List Max',code:['l = [10,20,30,40,50]','print(max(l))','print(min(l))','print(sum(l)/len(l))'],bug:0,exp:'Ye sahi hai!',correct:'Sahi Answer: Ye sahi hai! max=50, avg=30'},
-{id:34,unit:'U5{id:35,unit:'U5',topic:'U5 - Tuple Immutable',code:['t = (1,2,3)','t[0]=10','print(t)'],bug:1,exp:'Tuple immutable hota hai!',correct:'Sahi Answer: Tuple change nahi hota! List use karo agar change karna hai.'},
-{id:36,unit:'U5',topic:'U5 - Dictionary Key',code:['d = {"name":"Ram","marks":90}','print(d["Name"])','print(d["marks"])'],bug:1,exp:'Key case-sensitive hai!',correct:'Sahi Answer: print(d["name"]) chhota n likho.'},
+{id:34,unit:'U5',topic:'U5 - List Index',code:['l = [10,20,30]','print(l[3])','print(len(l))'],bug:1,exp:'List 0-2 tak hai!',correct:'Sahi Answer: print(l[2])  Last index 2 hai.'},
+{id:35,unit:'U5',topic:'U5 - Tuple Immutable',code:['t = (1,2,3)','t[0]=10','print(t)'],bug:1,exp:'Tuple immutable hota hai!',correct:'Sahi Answer: Tuple change nahi hota! List use karo agar change karna hai.'},
+{id:36,unit:'U5',topic:'U5 - Dictionary Key',code:['d = {"name":"Ram","marks":90}','print(d["Name"])','print(d["marks"])'],bug:1,exp:'Key case-sensitive hai!',correct:'Sahi Answer: print(d["name"])  chhota n likho.'},
 {id:37,unit:'U5',topic:'U5 - Set Duplicate',code:['s = {1,2,2,3}','print(s)','print(len(s))'],bug:0,exp:'Set me duplicate nahi hote!',correct:'Sahi Answer: Ye sahi hai! Set = {1,2,3}, len=3'},
 {id:38,unit:'U5',topic:'U5 - File Write Python',code:['f = open("data.txt","w")','f.write("Hello")','f.close()'],bug:0,exp:'Ye sahi hai!',correct:'Sahi Answer: Ye sahi hai! close() mat bhoolna.'},
 {id:39,unit:'U5',topic:'U5 - File Read Python',code:['f = open("data.txt","r")','print(f.read())','f.close()'],bug:0,exp:'Ye sahi hai!',correct:'Sahi Answer: Ye sahi hai! read() se pura file padhte hai.'},
@@ -126,9 +128,10 @@ var QB=[
 {id:46,unit:'U4',topic:'U4 - Fibonacci Python',code:['a,b=0,1','for i in range(5):','print(a)','a,b = b,a+b'],bug:2,exp:'Ye sahi hai!',correct:'Sahi Answer: Ye sahi hai! 0,1,1,2,3 aayega.'},
 {id:47,unit:'U5',topic:'U5 - List Append',code:['l = [1,2,3]','l.append(4)','print(l)'],bug:0,exp:'Ye sahi hai!',correct:'Sahi Answer: Ye sahi hai! append se last me add hota hai.'},
 {id:48,unit:'U5',topic:'U5 - Word Count Dict',code:['s="ram ram shyam"','d={}','for w in s.split():','d[w]=d.get(w,0)+1','print(d)'],bug:2,exp:'Ye sahi hai!',correct:'Sahi Answer: Ye sahi hai! {"ram":2,"shyam":1} aayega.'},
-{id:49,unit:'U1',topic:'U1 - Type Conversion',code:['#include <stdio.h>','int main(){','int a=5;','float b = a/2;','printf("%f",b);','return 0;','}'],bug:3,exp:'int/int = int hota hai!',correct:'Sahi Answer: float b = (float)a/2; Pehle float me badlo, tab 2.5 aayega.'},
+{id:49,unit:'U1',topic:'U1 - Type Conversion',code:['#include <stdio.h>','int main(){','int a=5;','float b = a/2;','printf("%f",b);','return 0;','}'],bug:3,exp:'int/int = int hota hai!',correct:'Sahi Answer: float b = (float)a/2;  Pehle float me badlo, tab 2.5 aayega.'},
 {id:50,unit:'U3',topic:'U3 - String Reverse',code:['#include <stdio.h>','#include <string.h>','int main(){','char s[]="hello";','for(int i=strlen(s)-1;i>=0;i--) printf("%c",s[i]);','}'],bug:3,exp:'Ye sahi hai!',correct:'Sahi Answer: Ye sahi hai! Reverse = olleh aayega.'}
-];',topic:'U5 - List Index',code:['l = [10,20,30]','print(l[3])','print(len(l))'],bug:1,exp:'List 0-2 tak hai!',correct:'Sahi Answer: print(l[2]) Last index 2 hai.'},
+];
+
 function shuffle(arr){ for(var i=arr.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=arr[i]; arr[i]=arr[j]; arr[j]=t; } return arr; }
 function buildPool(){
   var filtered = filter=='ALL' ? QB.slice() : QB.filter(function(q){ return q.unit==filter; });
@@ -198,8 +201,8 @@ function showCorrectAnswer(){
   if(examMode){
     box.innerHTML = '<b>✅ SAHI ANSWER - Line '+(cur.bug+1)+'</b><br>Exam khatam hone ke baad revision me dekhna, abhi Next dabao!';
   }
-    }
-  function check(){
+}
+function check(){
   if(answered){ document.getElementById('msg').innerText='Ye Question check ho chuka hai! NEXT dabao!'; return; }
   if(selected==-1){ document.getElementById('msg').innerText='⚠️ Pehle koi Bug wali line select karo! Bina select kiye Check nahi hoga!'; playSound('bad'); return; }
   clearInterval(timerInt);
